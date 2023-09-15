@@ -57,21 +57,20 @@ def main():
             fig.update_layout(title="Stock Price Prediction", xaxis_title="Date", yaxis_title="Price")
             st.plotly_chart(fig)
             
-            # Add search button for additional visualizations
-            if st.button("Search"):
-                # Add code for additional visualizations or predictions here
-                forecast_days = st.number_input("Enter the number of days to forecast:", min_value=1, max_value=365, value=30)
+            
+            # Add code for additional visualizations or predictions here
+            forecast_days = st.number_input("Enter the number of days to forecast:", min_value=1, max_value=365, value=30)
 
-                # Make predictions for the specified number of days
-                future_dates = pd.date_range(start=end_date + pd.Timedelta(days=1), periods=forecast_days)
-                future_predictions = model_fit.predict(start=len(stock_data), end=len(stock_data) + forecast_days - 1)
+            # Make predictions for the specified number of days
+            future_dates = pd.date_range(start=end_date + pd.Timedelta(days=1), periods=forecast_days)
+            future_predictions = model_fit.predict(start=len(stock_data), end=len(stock_data) + forecast_days - 1)
 
-                # Visualize future predictions
-                fig_future = go.Figure()
-                fig_future.add_trace(go.Scatter(x=stock_data.index, y=stock_data['Close'], name='Actual'))
-                fig_future.add_trace(go.Scatter(x=future_dates, y=future_predictions, name='Future Predictions'))
-                fig_future.update_layout(title="Stock Price Prediction (Including Future)", xaxis_title="Date", yaxis_title="Price")
-                st.plotly_chart(fig_future)
+            # Visualize future predictions
+            fig_future = go.Figure()
+            fig_future.add_trace(go.Scatter(x=stock_data.index, y=stock_data['Close'], name='Actual'))
+            fig_future.add_trace(go.Scatter(x=future_dates, y=future_predictions, name='Future Predictions'))
+            fig_future.update_layout(title="Stock Price Prediction (Including Future)", xaxis_title="Date", yaxis_title="Price")
+            st.plotly_chart(fig_future)
 
 if __name__ == "__main__":
     main()
