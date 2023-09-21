@@ -44,7 +44,7 @@ To run this dashboard on your local system, follow these steps:
 1. **Clone the repository** to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/Stock_Price_Prediction_Dashboard.git
+   git clone https://github.com/MrAkash920/Stock_Price_Prediction_Dashboard.git
 2. Navigate to the project directory:
 
     ```bash
